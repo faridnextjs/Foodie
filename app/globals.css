@@ -85,6 +85,8 @@ html {
 body {
   margin: 0;
   background: radial-gradient(#282c34, #282c34);
+  display: grid;
+  place-content: center;
 }
 
 .header-background {
