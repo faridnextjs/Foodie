@@ -72,9 +72,12 @@
     --card-border-rgb: 200, 200, 200;
   }
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;700&display=swap');
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -131,4 +134,10 @@ svg {
   font-size: 1.5rem;
   font-weight: 500;
   color: #ddd8d8;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
 }

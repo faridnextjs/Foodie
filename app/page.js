@@ -11,6 +11,13 @@ export default function Home() {
       <p>
         <Link href="/meals">Meals</Link>
       </p>
+      <p>
+        <Link href="/meals/share">Share</Link>
+      </p>
+      <p>
+        {' '}
+        <Link href="/community">Community</Link>
+      </p>
     </main>
   );
 }

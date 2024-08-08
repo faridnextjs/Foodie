@@ -5,10 +5,13 @@ export default function Meals() {
     <>
       <h1>Welcome to the Meals Section!</h1>
       <p>
-        <Link href={'/meals/share'}>Share Section</Link>
+        <Link href="/meals/post-1">Meal Section Post 1</Link>
       </p>
       <p>
-        <Link href={'/meals/community'}>Community Section</Link>
+        <Link href="/meals/post-2">Meal Section Post 2</Link>
+      </p>
+      <p>
+        <Link href="/meals/share">Share Section</Link>
       </p>
     </>
   );
