@@ -88,8 +88,6 @@ html {
 body {
   margin: 0;
   background: radial-gradient(#282c34, #282c34);
-  display: grid;
-  place-content: center;
 }
 
 .header-background {
@@ -134,10 +132,4 @@ svg {
   font-size: 1.5rem;
   font-weight: 500;
   color: #ddd8d8;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
 }

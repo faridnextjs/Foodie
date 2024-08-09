@@ -1,0 +1,6 @@
+.heading {
+  display: grid;
+  place-content: center;
+  color: #ffccbc;
+  gap: 0.0625rem;
+}
