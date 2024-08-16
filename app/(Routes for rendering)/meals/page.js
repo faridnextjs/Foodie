@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 export default function Meals() {
+  console.dir('Rendering Meals');
   return (
     <>
       <h1>Welcome to the Meals Section!</h1>

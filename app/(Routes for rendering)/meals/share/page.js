@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 export default function Share() {
+  console.dir('Rendering Share');
   return (
     <>
       <h1>⚠️ Welcome to the Share Section! ⚠️</h1>
