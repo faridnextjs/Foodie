@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
+import {Suspense} from 'react';
 import Link from 'next/link';
 import classes from './page.module.css';
 import MealsGrid from '@/components/(SSR Default)/meals/meals-grid';
-import { getMeals } from '@/lib/getMeals';
+import {getMeals} from '@/lib/getMeals';
 
 const Meals = async () => <MealsGrid meals={await getMeals()} />;
 // Server component functions can be converted to async function
@@ -24,7 +24,7 @@ export default function MealsPage() {
           <Link href="/meals/share">Share Your Favorite Recipe</Link>
         </p>
       </header>
-      <main className={classes.main}>
+      <main>
         {/* <MealsGrid meals={[]} /> */}
         {/* <MealsGrid meals={meals} /> */}
         <Suspense
