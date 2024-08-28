@@ -1,13 +1,13 @@
-import {Suspense} from 'react';
-import Link from 'next/link';
-import classes from './page.module.css';
-import MealsGrid from '@/components/(SSR Default)/meals/meals-grid';
-import {getMeals} from '@/lib/getMeals';
+import { Suspense } from "react";
+import Link from "next/link";
+import classes from "./page.module.css";
+import MealsGrid from "@/components/(SSR Default)/meals/meals-grid";
+import { getMeals } from "@/lib/getMeals";
 
 const Meals = async () => <MealsGrid meals={await getMeals()} />;
 // Server component functions can be converted to async function
 export default function MealsPage() {
-  console.dir('Rendering Meals');
+  console.dir("Rendering Meals");
 
   // we are getting data without useEffect, without any unnecessary fetch request
   // it's special for server components in Next.js
@@ -16,7 +16,7 @@ export default function MealsPage() {
     <>
       <header className={classes.header}>
         <h1>
-          Delicious meal created{' '}
+          Delicious meal created{" "}
           <span className={classes.highlight}>by you</span>
         </h1>
         <p>Choose your recipe and cook it yourself.It is easy and fun!</p>
