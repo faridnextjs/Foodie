@@ -1,9 +1,10 @@
-import ImageSlideshow from '@/components/(CSR)/imageSlideshow/imageSlideshow';
-import classes from './page.module.css';
-import Link from 'next/link';
+import ImageSlideshow from "@/components/(CSR)/imageSlideshow/imageSlideshow";
+import classes from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
-  console.dir('Rendering page.js');
+  console.dir("Rendering page.js");
+
   return (
     <>
       <header className={classes.header}>

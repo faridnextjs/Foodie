@@ -7,7 +7,7 @@ import { getMeals } from "@/lib/getMeals";
 const Meals = async () => <MealsGrid meals={await getMeals()} />;
 // Server component functions can be converted to async function
 export default function MealsPage() {
-  console.dir("Rendering Meals");
+  console.dir("Rendering page.js on meals folder");
 
   // we are getting data without useEffect, without any unnecessary fetch request
   // it's special for server components in Next.js

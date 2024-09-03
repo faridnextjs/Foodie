@@ -9,9 +9,15 @@ export default function SanitizedHtml({ rawHTML }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Sanitize the raw HTML content
-      const sanitized = DOMPurify.sanitize(rawHTML);
-      setSanitizedHTML(sanitized);
+      try {
+        // Sanitize the raw HTML content
+        let sanitized = DOMPurify.sanitize(rawHTML);
+        sanitized = sanitized.replace(/\n/g, "<br/>");
+
+        setSanitizedHTML(sanitized);
+      } catch (error) {
+        console.error("Error sanitizing HTML:", error);
+      }
     }
   }, [rawHTML]);
 

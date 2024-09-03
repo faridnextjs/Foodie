@@ -1,43 +1,37 @@
 import classes from "./page.module.css";
 import Image from "next/image";
 import { getMealBySlug } from "@/lib/getMeals";
-import SanitizedHtml from "@/components/(CSR)/DOMPurify/getMealDetailsHtml"; // Import the client-side component for sanitizing HTML
+import SanitizedHtml from "@/components/(CSR)/DOMPurify/getMealDetailsHtml";
+import { notFound } from "next/navigation.js"; // Import the client-side component for sanitizing HTML
 
 export default function MealDetailsPage({ params }) {
   // params contains the dynamic route parameters and their values and is passed to the page component as a prop and contain objects itself like {params: {mealSlug: "meal-slug"}}
   // {params: {key: "value"}} === {params: {mealSlug: "juicy-cheese-burger"}}
-  console.dir("This is {params}");
-  console.dir(params);
-
   // Get the meal data based on the 'slug' parameter
   // 'slug' is simply that part that's encoded in the URL  page.com/meals/mealSlug
-  const getAMeal = getMealBySlug(params.mealSlug),
-    image = getAMeal.image,
-    description = getAMeal.instructions,
-    email = "mailto:" + getAMeal.creator_email,
-    summary = getAMeal.summary,
-    creator = getAMeal.creator,
-    title = getAMeal.title,
-    rawHTML = description || "No description available";
+  const getAMeal = getMealBySlug(params.mealSlug);
+  // Fall back to the 404 page if the meal data is not found
+  !getAMeal && notFound();
 
-  console.dir(" This is {params.mealSlug}");
-  console.dir(params.mealSlug);
-  console.dir("This is getAMeal constant");
-  console.dir(getAMeal);
+  // Destructure the meal object to get necessary properties
+  const { image, instructions, creator_email, summary, creator, title } =
+      getAMeal,
+    email = "mailto:" + creator_email,
+    rawHTML = instructions || "No description available";
 
   return (
     <>
       <header className={classes.header}>
-        <div className={classes.image}>
+        <section className={classes.image}>
           <Image src={image} alt={title} fill />
-        </div>
-        <div className={classes.headerText}>
-          <h1>{getAMeal.title}</h1>
+        </section>
+        <article className={classes.headerText}>
+          <h1>{title}</h1>
           <p className={classes.creator}>
             by <a href={email}>{creator}</a>
           </p>
           <p className={classes.summary}>{summary}</p>
-        </div>
+        </article>
       </header>
       <main>
         {/* Use the SanitizedHtml component to safely render the raw HTML */}
