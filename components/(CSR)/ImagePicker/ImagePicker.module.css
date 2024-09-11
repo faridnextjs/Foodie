@@ -32,7 +32,9 @@
     align-items: center;
     text-align: center;
     color: #a4abb9;
-    position: relative
+    position: relative;
+    /*margin-left: 5%;*/
+
 }
 
 .preview p {
