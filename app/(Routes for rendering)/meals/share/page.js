@@ -1,24 +1,8 @@
 import classes from "./page.module.css";
 import ImagePicker from "@/components/(CSR)/ImagePicker/ImagePicker";
+import { shareMeal } from "@/lib/submitFormData.js";
 
 export default function ShareMealPage() {
-  // it is Server Action feature can be used in Next.js to define a function that runs on the server when the page is requested. This function is used to handle form submissions and other server-side logic.
-  async function shareMeal(formData) {
-    "use server";
-    console.warn("Sharing meal");
-    // we are accessing data formData the form FormData class collected by the form
-
-    const meal = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      title: formData.get("title"),
-      summary: formData.get("summary"),
-      instructions: formData.get("instructions"),
-      image: formData.get("image"),
-    };
-    console.log(meal);
-  }
-
   return (
     <>
       <header className={classes.header}>
@@ -53,6 +37,7 @@ export default function ShareMealPage() {
               id="instructions"
               name="instructions"
               rows="10"
+              placeholder="Separate steps with a new line"
               required
             ></textarea>
           </p>

@@ -6,7 +6,7 @@ const dummyMeals = [
   {
     title: "Juicy Cheese Burger",
     slug: "juicy-cheese-burger",
-    image: "/images/burger.jpg",
+    images: ["/images/burger.jpg"],
     summary:
       "A mouth-watering burger with a juicy beef patty and melted cheese, served in a soft bun.",
     instructions: `
@@ -28,7 +28,7 @@ const dummyMeals = [
   {
     title: "Spicy Curry",
     slug: "spicy-curry",
-    image: "/images/curry.jpg",
+    images: ["/images/curry.jpg"],
     summary:
       "A rich and spicy curry, infused with exotic spices and creamy coconut milk.",
     instructions: `
@@ -53,7 +53,7 @@ const dummyMeals = [
   {
     title: "Homemade Dumplings",
     slug: "homemade-dumplings",
-    image: "/images/dumplings.jpg",
+    images: ["/images/dumplings.jpg"],
     summary:
       "Tender dumplings filled with savory meat and vegetables, steamed to perfection.",
     instructions: `
@@ -75,7 +75,7 @@ const dummyMeals = [
   {
     title: "Classic Mac n Cheese",
     slug: "classic-mac-n-cheese",
-    image: "/images/macAndCheese.jpg",
+    images: ["/images/macAndCheese.jpg"],
     summary:
       "Creamy and cheesy macaroni, a comforting classic that's always a crowd-pleaser.",
     instructions: `
@@ -100,7 +100,7 @@ const dummyMeals = [
   {
     title: "Authentic Pizza",
     slug: "authentic-pizza",
-    image: "/images/pizza.jpg",
+    images: ["/images/pizza.jpg"],
     summary:
       "Hand-tossed pizza with a tangy tomato sauce, fresh toppings, and melted cheese.",
     instructions: `
@@ -122,7 +122,7 @@ const dummyMeals = [
   {
     title: "Wiener Schnitzel",
     slug: "wiener-schnitzel",
-    image: "/images/schnitzel.jpg",
+    images: ["/images/schnitzel.jpg"],
     summary:
       "Crispy, golden-brown breaded veal cutlet, a classic Austrian dish.",
     instructions: `
@@ -144,19 +144,19 @@ const dummyMeals = [
   {
     title: "Fresh Tomato Salad",
     slug: "fresh-tomato-salad",
-    image: "/images/tomato-salad.jpg",
+    images: ["/images/tomato-salad.jpg"],
     summary:
       "A light and refreshing salad with ripe tomatoes, fresh basil, and a tangy vinaigrette.",
     instructions: `
       1. Prepare the tomatoes:
         Slice fresh tomatoes and arrange them on a plate.
-    
+
       2. Add herbs and seasoning:
          Sprinkle chopped basil, salt, and pepper over the tomatoes.
-    
+
       3. Dress the salad:
          Drizzle with olive oil and balsamic vinegar.
-    
+
       4. Serve:
          Enjoy this simple, flavorful salad as a side dish or light meal.
     `,
@@ -171,7 +171,7 @@ db.prepare(
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        slug TEXT NOT NULL UNIQUE,
        title TEXT NOT NULL,
-       image TEXT NOT NULL,
+       images TEXT NOT NULL,  -- Updated to store multiple images as a comma-separated string
        summary TEXT NOT NULL,
        instructions TEXT NOT NULL,
        creator TEXT NOT NULL,
@@ -186,7 +186,7 @@ async function initData() {
          null,
          @slug,
          @title,
-         @image,
+         @images,
          @summary,
          @instructions,
          @creator,
@@ -195,6 +195,7 @@ async function initData() {
    `);
 
   for (const meal of dummyMeals) {
+    meal.images = meal.images.join(","); // Convert the images array to a comma-separated string
     stmt.run(meal);
   }
 }

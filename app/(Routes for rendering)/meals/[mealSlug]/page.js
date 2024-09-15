@@ -14,16 +14,21 @@ export default function MealDetailsPage({ params }) {
   !getAMeal && notFound();
 
   // Destructure the meal object to get necessary properties
-  const { image, instructions, creator_email, summary, creator, title } =
+  const { images, instructions, creator_email, summary, creator, title } =
       getAMeal,
     email = "mailto:" + creator_email,
-    rawHTML = instructions || "No description available";
+    rawHTML = instructions || "No description available",
+    image = images && images.length > 0 ? images[0] : null;
 
   return (
     <>
       <header className={classes.header}>
         <section className={classes.image}>
-          <Image src={image} alt={title} fill />
+          {image ? (
+            <Image src={image} alt={title} fill />
+          ) : (
+            <p>Image not available</p>
+          )}
         </section>
         <article className={classes.headerText}>
           <h1>{title}</h1>
