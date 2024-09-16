@@ -1,4 +1,4 @@
-import ImageSlideshow from "@/components/(CSR)/imageSlideshow/imageSlideshow";
+import ImageSlideshow from "@/components/(CSR)/ImageSlideshow/ImageSlideshow.js";
 import classes from "./page.module.css";
 import Link from "next/link";
 

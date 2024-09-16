@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import classes from "./page.module.css";
-import MealsGrid from "@/components/(SSR Default)/meals/meals-grid";
-import { getMeals } from "@/lib/getMeals";
+import MealsGrid from "@/components/(SSR Default)/meals/mealsGrid.js";
+import { getMeals } from "@/lib/getMeals.js";
 
 const Meals = async () => <MealsGrid meals={await getMeals()} />;
 // Server component functions can be converted to async function

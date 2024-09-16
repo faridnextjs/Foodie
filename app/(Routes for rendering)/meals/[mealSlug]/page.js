@@ -1,8 +1,8 @@
 import classes from "./page.module.css";
 import Image from "next/image";
-import { getMealBySlug } from "@/lib/getMeals";
+import { getMealBySlug } from "@/lib/getMeals.js";
 import SanitizedHtml from "@/components/(CSR)/DOMPurify/getMealDetailsHtml";
-import { notFound } from "next/navigation.js"; // Import the client-side component for sanitizing HTML
+import { notFound } from "next/navigation"; // Import the client-side component for sanitizing HTML
 
 export default function MealDetailsPage({ params }) {
   // params contains the dynamic route parameters and their values and is passed to the page component as a prop and contain objects itself like {params: {mealSlug: "meal-slug"}}
